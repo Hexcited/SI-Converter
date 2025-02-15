@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SI Muuntaja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 400px;
+            text-align: center;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input[type="number"], select {
+            padding: 8px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Muuntaja</h1>
+    <div class="container">
+        <form method="POST" action="/convert">
+            <label for="choice">Valitse etuliite:</label>
+            <select name="choice" id="choice" required>
+                <option value="1">Kilowatti -> Megawatti</option>
+                <option value="2">Megawatti -> Gigawatti</option>
+                <option value="3">Gigawatti -> Terawatti</option>
+            </select>
+
+            <label for="value">Arvo:</label>
+            <input type="number" name="value" id="value" required />
+
+            <button type="submit">Muunna</button>
+        </form>
+
+        {% if result is not none %}
+            <h3>Result: {{ result }} {{ unit }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
